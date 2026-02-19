@@ -1,49 +1,91 @@
-# High-Performance C2C Seller Insights Dashboard
+# Seller Hub - Kaito
+
+A high-performance, React-based dashboard designed for C2C e-commerce sellers. This application provides real-time insights, efficient transaction management, and AI-driven recommendations to help sellers optimize their business.
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Recharts](https://img.shields.io/badge/Recharts-22B573?style=for-the-badge&logo=databricks&logoColor=white)
-![UI/UX](https://img.shields.io/badge/UI%2FUX-Design_First-blueviolet?style=for-the-badge)
-![Performance](https://img.shields.io/badge/Performance-Virtual_Scrolling-orange?style=for-the-badge)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Gemini AI](https://img.shields.io/badge/Gemini_AI-8E75B2?style=for-the-badge&logo=google-bard&logoColor=white)
 
-## Overview
-This project is a frontend prototype of a "Seller Insights" dashboard, engineered specifically to handle the massive data density and scale required by top-tier Customer-to-Customer (C2C) marketplaces in Japan. 
+## ✨ Key Features
 
-Drawing on over four years of experience in digital marketing and social media strategy, this UI moves beyond a standard CRUD application. It is designed for high-volume power sellers, bridging the gap between raw e-commerce data and actionable business insights by prioritizing rendering performance, real-time UI states, and a premium visual hierarchy.
+### 1. Interactive Dashboard (Live Pulse)
+- **Real-Time Simulation:** Simulates live sales data and activity feeds (New Sales, Offers) to provide a dynamic "pulse" of the business.
+- **Data Visualization:** Interactive area charts using `Recharts` to visualize 30-day sales trends with custom tooltips.
+- **AI-Powered Insights:** Integrates **Google Gemini API** to analyze current metrics and generate actionable growth strategies for the seller.
 
-## ✨ Key Features & Technical Highlights
+### 2. efficient Transaction Management
+- **Custom Virtual Scrolling:** Implements a custom virtual list architecture to handle thousands of transaction rows with 60fps scrolling performance, preventing DOM bloat.
+- **Advanced Filtering:** Client-side search and filtering capabilities by ID, Item Name, or Buyer.
 
-### 1. Main Seller Hub (Live Pulse)
-* **Real-Time Data Simulation:** A highly responsive grid layout featuring live metric updates (Sales, Active Listings, Pending Shipments) simulating WebSocket streams.
-* **Interactive Data Visualization:** Integrates `Recharts` for a buttery-smooth 30-day sales trend line graph, complete with custom frosted-glass tooltips for precise data hover states.
+### 3. Modern UI/UX
+- **Dark Mode Support:** Fully responsive dark/light mode toggle with persistent state.
+- **Responsive Design:** Optimized layouts for both desktop dashboards and mobile quick-views.
+- **Glassmorphism & Gradients:** Uses a modern aesthetic with subtle gradients and glass-morphism effects.
 
-### 2. Transaction Management (DOM Optimization)
-* **Virtual Scrolling Architecture:** Built to handle thousands of transaction rows without browser lag. Implements virtualized lists (rendering only the DOM nodes visible on the screen) to guarantee a flawless 60fps scrolling experience.
-* **Complex UI States:** Features color-coded status badges and dynamic "loading skeleton" states to visually represent infinite scrolling and data fetching.
+## 🛠️ Tech Stack
 
-### 3. Inventory Health & Analytics
-* **Marketing-Driven UI:** An "Action Required" widget that acts as an intelligent assistant. It flags specific inventory items (e.g., high views, zero offers) and suggests concrete optimization strategies (e.g., price drops, cover photo updates).
-* **Category Breakdown:** A sleek, animated donut chart breaking down sales volume by product category to help sellers identify winning niches.
-
-## 🛠️ Tech Stack & Architecture
-* **Frontend Framework:** React.js
-* **Data Visualization:** Recharts
-* **Performance Optimization:** `react-window` / `@tanstack/react-virtual`
-* **Styling:** CSS Grid & Flexbox (Dark Mode / Glassmorphism aesthetic)
-* **Animation:** Framer Motion
+- **Frontend Framework:** React 19
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS (via CDN for rapid prototyping)
+- **Routing:** React Router DOM
+- **Data Visualization:** Recharts
+- **AI Integration:** Google GenAI SDK (`@google/genai`)
+- **Icons:** Google Material Symbols
 
 ## 🚀 Getting Started
 
-To run this project locally and explore the UI components:
+Follow these steps to set up the project locally.
 
-```bash
-# 1. Clone the repository
-git clone [https://github.com/yourusername/your-repo-name.git](https://github.com/yourusername/your-repo-name.git)
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm or yarn
 
-# 2. Navigate into the directory
-cd your-repo-name
+### Installation
 
-# 3. Install dependencies
-npm install
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Vishnu1837/ecommerce-seller-insights-ui.git
+   cd ecommerce-seller-insights-ui
+   ```
 
-# 4. Start the development server
-npm start
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**
+   To use the AI features, you need a Google Gemini API key.
+   Create a `.env` file in the root directory and add:
+   ```env
+   API_KEY=your_google_gemini_api_key
+   ```
+
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open in Browser**
+   Navigate to `http://localhost:5173` to view the application.
+
+## 📂 Project Structure
+
+```
+ecommerce-seller-insights-ui/
+├── components/          # React components
+│   ├── HomeDashboard.tsx    # Main dashboard with charts & AI
+│   ├── TransactionList.tsx  # Virtualized transaction list
+│   ├── InventoryHealth.tsx  # Inventory analytics
+│   ├── Sidebar.tsx          # Navigation sidebar
+│   ├── Header.tsx           # Top navigation and theme toggle
+│   └── BottomNav.tsx        # Mobile navigation
+├── constants.ts         # Mock data and configuration
+├── types.ts             # TypeScript interfaces
+├── App.tsx              # Main application entry and routing
+├── index.html           # HTML entry point (Tailwind CDN)
+└── vite.config.ts       # Vite configuration
+```
+
+## ⚠️ Note on Rendering vs Real Data
+This project is a **UI Prototype**. While the AI integration works with a real API key, the sales data and transaction history are currently simulated using mock data (`constants.ts`) to demonstrate the UI capabilities and performance optimizations.
